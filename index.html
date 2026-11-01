@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#080808">
+<link rel="icon" href="./icon-192.png">
+<link rel="apple-touch-icon" href="./icon-192.png">
 <title>VESTIQ – Your Style. Your Identity.</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500&display=swap">
 <style>
@@ -470,6 +474,14 @@ function App(){
  <nav class="nav"><div>${['Profile','Outfits','Saved'].map(t=>html`<button key=${t} class=${tab===t?'on':''} onClick=${()=>go(t)}>${t==='Saved'?'Favourites ('+saved.length+')':t}</button>`)}</div></nav></div>`;
 }
 ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(Boundary,null,React.createElement(App)));window.__ok=true;
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .catch(error => console.error("Service Worker:", error));
+  });
+}
 </script>
 </body>
 </html>
